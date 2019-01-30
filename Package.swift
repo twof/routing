@@ -6,9 +6,11 @@ let package = Package(
     products: [
         .library(name: "Routing", targets: ["Routing"]),
     ],
-    dependencies: [ ],
+    dependencies: [
+        .package(url: "https://github.com/realm/SwiftLint.git", from: "0.30.1"),
+    ],
     targets: [
-        .target(name: "Routing", dependencies: []),
+        .target(name: "Routing", dependencies: ["swiftlint"]),
         .testTarget(name: "RoutingTests", dependencies: ["Routing"]),
     ]
 )
