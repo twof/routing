@@ -3,7 +3,6 @@
 public enum PathComponent: ExpressibleByStringLiteral, CustomStringConvertible {
     /// A normal, constant path component.
     case constant(String)
-
     /// A dynamic parameter component. 
     case parameter(String)
     
@@ -13,7 +12,6 @@ public enum PathComponent: ExpressibleByStringLiteral, CustomStringConvertible {
     /// This route will match and discard any number of constant components after
     /// this anything component.
     case catchall
-
     /// `ExpressibleByStringLiteral` conformance.
     public init(stringLiteral value: String) {
         if value.hasPrefix(":") {
@@ -28,8 +26,8 @@ public enum PathComponent: ExpressibleByStringLiteral, CustomStringConvertible {
     }
     
     /// `CustomStringConvertible` conformance.
-    public var description: String {
         switch self {
+    public var description: String {
         case .anything: return ":"
         case .catchall: return "*"
         case .parameter(let name): return ":" + name
@@ -37,7 +35,6 @@ public enum PathComponent: ExpressibleByStringLiteral, CustomStringConvertible {
         }
     }
 }
-
 extension Array where Element == PathComponent {
     /// Converts an array of `PathComponent` into a readable path string.
     ///
